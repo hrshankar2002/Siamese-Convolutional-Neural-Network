@@ -63,8 +63,8 @@ Accurate ECG signal classification is vital for the early diagnosis and treatmen
 ## 🛠️ Installation
 
 ```bash
-git clone https://github.com/yourusername/ecg-siamese-scnet.git
-cd ecg-siamese-scnet
+git clone git@github.com:hrshankar2002/Siamese-Convolutional-Neural-Network.git
+cd Siamese-Convolutional-Neural-Network
 pip install -r requirements.txt
 ```
 
@@ -72,16 +72,38 @@ pip install -r requirements.txt
 
 ## 🚀 Usage
 
+### Data Retrieval
+```bash
+python3 get_data.py
+```
+
+### Data Augmentation
+
+```bash
+python3 data_aug.py \
+  --input_folder ./path_to_data \
+  --count 6000 \
+  --aug_type wavelet \
+  --to_aug 1
+```
+
 ### Train the Siamese Network
 
 ```bash
-python train.py --model siamese --epochs 10 --batch_size 16
+python train.py \
+  --model siamese \
+  --epochs 10 \
+  --batch_size 16 \
+  --data_dir ./path_to_data dir 
 ```
 
 ### Evaluate the Trained Model
 
 ```bash
-python evaluate.py --model siamese --weights checkpoints/siamese_best.h5
+python evaluate.py \
+  --model siamese \
+  --weights ./path_to_h5_file \ 
+  --data_dir "path/to/data dir"
 ```
 
 ---

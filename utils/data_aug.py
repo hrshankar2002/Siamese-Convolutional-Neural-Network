@@ -83,32 +83,19 @@ def main():
 
     X = standardization(X)
 
-    X = X.reshape((int(args.count), 3600))
-    y = y.reshape((int(args.count)))
+    X = X.reshape((1000, 3600))
+    y = y.reshape(1000)
     scales = np.arange(1,200)
-
-    # for i in range(1000):
-    #     coef,freq = pywt.cwt(X[i],scales,'gaus1')
-    #     plt.imshow(abs(coef),extent = [0,200,100,1],interpolation='bilinear',cmap='bone')
-    #     plt.gca().invert_yaxis()
-    #     plt.savefig(f'DatasetWave/{y[i]}/{i}.png')
-    #     plt.close()
-
-    # for i in range(1000):
-        # plt.specgram(X[0],NFFT=256,Fs=600,noverlap=128,cmap='jet_r')
-        # plt.colorbar()
-        # plt.savefig(f'DatasetSpectro/{y[i]}/{i}.png')
-        # plt.close()
         
-
     label=[]
     X = list(X)
     y = list(y)
 
-    # for i in tqdm(range(1000), desc='Processing data', unit='file'):
-    #     aug = augment_ecg_signal(X[i])
-    #     X.extend(aug)
-    #     y.extend(np.ones(5,dtype=int)*y[i])
+    if int(args.to_aug) == 1:
+        for i in tqdm(range(1000), desc='Processing data', unit='file'):
+            aug = augment_ecg_signal(X[i])
+            X.extend(aug)
+            y.extend(np.ones(5,dtype=int)*y[i])
         
     for i in tqdm(range(int(args.count) if int(args.to_aug) == 0 else 6*int(args.count)), desc='Saving data', unit='file'):
         coef, freq = pywt.cwt(X[i],scales,'gaus1')
