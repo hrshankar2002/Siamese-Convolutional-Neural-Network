@@ -5,7 +5,6 @@
   <h3 align="center"><a href="https://ieeexplore.ieee.org/document/10958947">📚Paper</a> | <a href="https://github.com/hrshankar2002/Siamese-Convolutional-Neural-Network">💾Code</a> </h3>
   <div align="center"></div>
 </p>
-<br>
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange)
@@ -71,6 +70,8 @@ Accurate ECG signal classification is vital for the early diagnosis and treatmen
 ```bash
 git clone git@github.com:hrshankar2002/Siamese-Convolutional-Neural-Network.git
 cd Siamese-Convolutional-Neural-Network
+conda create -n siamese-env python=3.9 -y
+conda activate siamese-env
 pip install -r requirements.txt
 ```
 
@@ -109,7 +110,7 @@ python train.py \
 python evaluate.py \
   --model siamese \
   --weights ./path_to_h5_file \ 
-  --data_dir "path/to/data dir"
+  --data_dir ./path/to/data dir
 ```
 
 ---
