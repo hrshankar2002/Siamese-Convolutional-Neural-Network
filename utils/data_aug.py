@@ -1,3 +1,4 @@
+import argparse
 import os
 
 import matplotlib.pyplot as plt
@@ -7,7 +8,6 @@ import pywt
 import scipy.io as scio
 from sklearn.model_selection import train_test_split
 from tqdm import tqdm
-import argparse
 
 
 # function to apply different augmentations
@@ -115,7 +115,7 @@ def main():
         
         if args.aug_type == 'wavelet':
             # save wavelet as png:
-            save_dir = f'DatasetWaveNew_3/{y[i]}'
+            save_dir = f'../data/DatasetWaveNew_3/{y[i]}'
             if not os.path.exists(save_dir):
                 os.makedirs(save_dir)
             plt.imshow(abs(coef), extent=[0, 200, 100, 1], interpolation='bilinear', cmap='bone')
@@ -127,12 +127,12 @@ def main():
             # save spectrogram as png:
             plt.specgram(X[0],NFFT=256,Fs=600,noverlap=128,cmap='jet_r')
             plt.colorbar()
-            plt.savefig(f'DatasetSpectro/{y[i]}/{i}.png')
+            plt.savefig(f'../data/DatasetSpectro/{y[i]}/{i}.png')
             plt.close()
             
         elif args.aug_type == 'wavelet_mat':
             # save wavelet as matlab files:
-            directory = f'DatasetWave_1D_2/{y[i]}'
+            directory = f'../data/DatasetWave_1D_2/{y[i]}'
             if not os.path.exists(directory):
                 os.makedirs(directory)
             mat_filename = os.path.join(directory, f'{i}.mat')

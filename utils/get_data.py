@@ -60,8 +60,8 @@ def rename_folder(old_name, new_name):
 url_2 = "https://figshare.com/ndownloader/files/9746881" # ECG 744 Fragments
 url_1 = "https://figshare.com/ndownloader/files/9746845" # ECG 1000 Fragments
 
-file_1 = "dataset_1.zip"
-file_2 = "dataset_2.zip"
+file_1 = "../data/dataset_1.zip"
+file_2 = "../data/dataset_2.zip"
 
 # Download the datasets
 download_file(url_1, file_1)
@@ -70,11 +70,11 @@ download_file(url_2, file_2)
 # Extract the datasets and rename folders
 extracted_folder_1 = extract_file(file_1)
 if extracted_folder_1:
-    rename_folder(extracted_folder_1, 'Dataset_1') 
+    rename_folder(extracted_folder_1, '../data/Dataset_1') 
 
 extracted_folder_2 = extract_file(file_2)
 if extracted_folder_2:
-    rename_folder(extracted_folder_2, 'Dataset_2')
+    rename_folder(extracted_folder_2, '../data/Dataset_2')
 
 # Clean up the zip files after extraction
 os.remove(file_1)
